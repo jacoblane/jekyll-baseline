@@ -1,0 +1,8 @@
+
+name: The name of your blog
+description: Populates the meta description
+author: Populates meta autor
+
+markdown: redcarpet
+highlighter: pygments
+exclude: ["node_modules", "gulpfile.js", "package.json", 'README.md']
