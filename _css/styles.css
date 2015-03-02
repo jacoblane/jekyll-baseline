@@ -2,4 +2,7 @@
 /* import normalize from npm */
 @import "normalize.css";
 
-/* add custom css and/or @import other files*/
+/* import local files */
+@import "./syntax.css";
+
+/* add custom css */

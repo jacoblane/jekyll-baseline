@@ -2,7 +2,8 @@
 
 ### Install
 
-* In terminal run
+In terminal run
+
 ```bash
     git clone https://github.com/jacoblane/jekyll-baseline.git [somename]
     cd [somename]

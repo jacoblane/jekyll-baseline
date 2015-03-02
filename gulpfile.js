@@ -1,13 +1,14 @@
 
 // Require dependencies.
 var gulp          = require('gulp');
-var rework    = require('gulp-rework');
+var rework        = require('gulp-rework');
 var reworkNpm     = require('rework-npm');
 var reworkVars    = require('rework-vars');
 var reworkMedia   = require('rework-custom-media');
 var reworkCalc    = require('rework-calc');
 var reworkColors  = require('rework-plugin-colors');
-var cssPrefix     = require('gulp-autoprefixer');
+var reworkInherit = require('rework-inherit');
+var cssAutoprefix = require('gulp-autoprefixer');
 var cssMinify     = require('gulp-minify-css');
 var rename        = require('gulp-rename');
 var cp            = require('child_process');
@@ -39,8 +40,8 @@ gulp.task('browser-sync', function() {
 
 // build site with Jekyll
 gulp.task('jekyll-build', function () {
-  return cp.spawn('jekyll', ['build'], {stdio: 'inherit'})
-    .on('close', browserSync.reload);
+  return cp.spawn('jekyll', ['build'])//, {stdio: 'inherit'})
+    .on('exit', browserSync.reload);
 });
 
 // build css
@@ -52,8 +53,9 @@ gulp.task('css-build', function() {
       , reworkMedia()
       , reworkCalc // don't need ()
       , reworkColors()
+      , reworkInherit()
     ))
-    .pipe(cssPrefix(cssPrefixOptions))
+    .pipe(cssAutoprefix(cssPrefixOptions))
     .pipe(gulp.dest(paths.stylesStagingDir))
     .pipe(gulp.dest(paths.stylesDistDir))
     .pipe(cssMinify())
@@ -68,8 +70,8 @@ gulp.task('build', ['css-build', 'jekyll-build']);
 
 // watch for changes
 gulp.task('watch', function () {
-    gulp.watch(paths.styles, ['css-build']);
-    gulp.watch([paths.homepage, paths.layouts, paths.posts], ['jekyll-build']);
+  gulp.watch(paths.styles, ['css-build']);
+  gulp.watch([paths.homepage, paths.layouts, paths.posts], ['jekyll-build']);
 });
 
 // let's get started

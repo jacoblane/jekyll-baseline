@@ -8,7 +8,7 @@
     "url": "https://github.com/jacoblane/jekyll-baseline.git"
   },
   "scripts": {
-    "gulp-it": "gulp"
+    "start": "gulp"
   },
   "keywords": [
     "jekyll",
@@ -27,6 +27,7 @@
     "normalize.css": "^3.0.2",
     "rework-calc": "^1.1.0",
     "rework-custom-media": "^0.2.0",
+    "rework-inherit": "^0.2.3",
     "rework-npm": "^1.0.0",
     "rework-plugin-colors": "^1.0.3",
     "rework-vars": "^3.1.1"
